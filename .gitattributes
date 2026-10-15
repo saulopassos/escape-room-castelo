@@ -1,0 +1,16 @@
+* text=auto eol=lf
+
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+
+*.glb binary
+*.png binary
+*.jpg binary
+*.ogg binary
+*.wav binary
+*.ttf binary
+*.otf binary
+
+# Se os modelos .glb ficarem grandes (> 10 MB), os gerentes podem ativar o Git LFS:
+#   git lfs install
+#   git lfs track "*.glb"

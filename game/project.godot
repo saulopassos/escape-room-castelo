@@ -1,0 +1,21 @@
+; Arquivo de projeto do Godot 4.
+; Os gerentes devem abrir este projeto no Godot 4.7.2 (versão fixada em docs/02_DECISOES.md)
+; e deixar o Godot atualizar este arquivo se pedir.
+
+config_version=5
+
+[application]
+
+config/name="Escape Room dos Cursos Técnicos"
+run/main_scene="res://core/menu/menu_principal.tscn"
+config/features=PackedStringArray("4.7", "Forward Plus")
+
+[autoload]
+
+GameConfig="*res://core/autoload/game_config.gd"
+ServerAPI="*res://core/autoload/server_api.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720

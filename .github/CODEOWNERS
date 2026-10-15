@@ -1,0 +1,10 @@
+# Troque @usuario-* pelos usuários reais do GitHub.
+# O dono indicado é chamado automaticamente para revisar PRs que mexem na pasta.
+
+*                               @usuario-gerente1 @usuario-gerente2
+
+/game/rooms/mecatronica/        @usuario-autor-mecatronica @usuario-gerente1 @usuario-gerente2
+/game/rooms/eletrotecnica/      @usuario-autor-eletrotecnica @usuario-gerente1 @usuario-gerente2
+/game/rooms/seguranca/          @usuario-autor-seguranca @usuario-gerente1 @usuario-gerente2
+/game/rooms/quimica/            @usuario-autor-quimica @usuario-gerente1 @usuario-gerente2
+/game/rooms/informatica/        @usuario-autor-informatica @usuario-gerente1 @usuario-gerente2
