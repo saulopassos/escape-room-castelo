@@ -8,10 +8,18 @@ import sys
 from pathlib import Path
 
 import pytest
+from dotenv import dotenv_values
 
 PASTA_SERVIDOR = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PASTA_SERVIDOR))
 TOKEN = {"X-Token-Evento": "token-de-teste"}
+
+# NPCs reais a validar: PASTA_NPCS do ambiente ou do server/.env; senão, server/npcs/.
+PASTA_NPCS_REAIS = Path(
+    os.environ.get("PASTA_NPCS")
+    or dotenv_values(PASTA_SERVIDOR / ".env").get("PASTA_NPCS")
+    or PASTA_SERVIDOR / "npcs"
+)
 
 
 @pytest.fixture()
@@ -19,12 +27,13 @@ def cliente(tmp_path, monkeypatch):
     monkeypatch.setenv("DB_CAMINHO", str(tmp_path / "teste.db"))
     monkeypatch.setenv("TOKEN_EVENTO", "token-de-teste")
     monkeypatch.setenv("PASTA_NPCS", str(PASTA_SERVIDOR / "npcs_exemplo"))
-    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
     from fastapi.testclient import TestClient
 
-    import app as modulo_app
+    import app as modulo_app  # o import roda load_dotenv(), que pode trazer a chave do .env
     import banco
 
+    # Remover a chave DEPOIS do import garante que nenhum teste chame a IA de verdade.
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
     banco.inicializar()
     return TestClient(modulo_app.app)
 
@@ -138,13 +147,14 @@ def test_instrucoes_nunca_contem_o_codigo(monkeypatch):
     assert npc.codigo not in npc_ia.montar_instrucoes(npc)
 
 
-@pytest.mark.parametrize("pasta", ["npcs_exemplo", "npcs"])
+@pytest.mark.parametrize("pasta", [PASTA_SERVIDOR / "npcs_exemplo", PASTA_NPCS_REAIS],
+                         ids=["exemplo", "reais"])
 def test_todas_as_fichas_de_npc_sao_validas(pasta, monkeypatch):
-    """Valida o exemplo e também as fichas reais que estiverem no PC (server/npcs/)."""
+    """Valida o exemplo e as fichas reais deste PC (PASTA_NPCS ou server/npcs/)."""
     import npc_ia
 
-    monkeypatch.setenv("PASTA_NPCS", str(PASTA_SERVIDOR / pasta))
-    for arquivo in (PASTA_SERVIDOR / pasta).glob("*.json"):
+    monkeypatch.setenv("PASTA_NPCS", str(pasta))
+    for arquivo in pasta.glob("*.json"):
         npc = npc_ia.carregar_npc(arquivo.stem)
         assert npc is not None, f"{arquivo.name}: nome inválido (use <tema>_sala<n>.json)"
         assert npc.id == arquivo.stem
