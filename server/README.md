@@ -56,12 +56,37 @@ Jogo ◀──fala (+ código se aprovado)──
 - Tudo fica registrado nas tabelas `npc_mensagens`, `npc_liberacoes` e `eventos` de `placar.db`
   (inclusive o `motivo` dado pela IA), para o professor auditar uma liberação contestada.
 
-## Criar o NPC de uma sala (autores)
+## Entrega dos NPCs (fora do repositório público)
 
-1. Copie `npcs/quimica_sala1.json` para `npcs/<tema>_sala<n>.json` (o nome do arquivo **é** o ID).
-2. Preencha a partir da [ficha do NPC](../docs/fichas/ficha_npc.md) aprovada.
-3. Rode `pytest`: o teste `test_todas_as_fichas_de_npc_sao_validas` confere o arquivo.
-4. Teste conversando em `http://localhost:8000/docs` antes de ligar no jogo.
+O repositório principal é **público**, então o JSON dos NPCs (código secreto e rubrica) **nunca**
+vai para ele: o git ignora `server/npcs/`. Os NPCs reais ficam num **segundo repositório,
+privado**: `escape-room-castelo-npcs` (repositório privado é gratuito; só não tem proteção de
+branch, o que aqui não faz falta).
+
+```
+escape-room-castelo       (público)  → jogo, servidor, docs, NPC fictício de exemplo
+escape-room-castelo-npcs  (privado)  → mecatronica_sala1.json, quimica_sala1.json, ...
+```
+
+**Autor (criar e testar o NPC da sua sala):**
+
+1. Clone o repositório privado **ao lado** do principal:
+   `git clone https://github.com/saulopassos/escape-room-castelo-npcs`
+2. Copie `server/npcs_exemplo/informatica_sala1.json` para o repositório privado com o nome
+   `<tema>_sala<n>.json` (o nome do arquivo **é** o ID) e preencha a partir da
+   [ficha do NPC](../docs/fichas/ficha_npc.md) aprovada.
+3. Para testar no seu PC, no `server/.env` coloque `PASTA_NPCS=` com o caminho completo do clone
+   privado, rode o servidor e converse com o NPC em `http://localhost:8000/docs`.
+   (Alternativa rápida: copiar o JSON para `server/npcs/`, que o git ignora.)
+4. Rode `pytest`: `test_todas_as_fichas_de_npc_sao_validas` confere o formato.
+5. `git add`, `commit` e `push` **no repositório privado** (direto na `main` dele).
+
+**Gerente / PC placar:** clonar o repositório privado no PC placar, apontar `PASTA_NPCS` no
+`server/.env` para ele e dar `git pull` antes de cada ensaio e da gincana. O servidor lê o JSON a
+cada mensagem, então não precisa reiniciar.
+
+> Os autores conseguem ver as respostas uns dos outros no repositório privado. Tudo bem: autores
+> não competem; na gincana atuam como suporte.
 
 ## Antes da gincana
 

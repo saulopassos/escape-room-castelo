@@ -7,7 +7,8 @@ Sala: <!-- sala1, sala2... -->
 
 ## Checklist do autor
 
-- [ ] Só alterei arquivos da minha área (`game/rooms/<meu-tema>/`, `server/npcs/<meu-tema>_*.json`)
+- [ ] Só alterei arquivos da minha área (`game/rooms/<meu-tema>/`)
+- [ ] O JSON do NPC **não** está neste PR (vai para o repositório privado de NPCs)
 - [ ] Usei apenas peças do catálogo (`game/core/pecas/`)
 - [ ] Todo enigma divide informação entre papéis ou exige 2 jogadores juntos
 - [ ] Testei com **2 instâncias** do jogo, do início ao fim da sala

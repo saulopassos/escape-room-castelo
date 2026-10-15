@@ -12,7 +12,6 @@ from pathlib import Path
 import anthropic
 from pydantic import BaseModel, Field
 
-PASTA_NPCS = Path(__file__).parent / "npcs"
 ID_VALIDO = re.compile(r"^[a-z]+_sala\d+$")
 
 
@@ -48,10 +47,15 @@ class IAIndisponivel(Exception):
     """Sem chave, sem internet, erro da API ou recusa: o jogo deve usar o quiz reserva."""
 
 
+def pasta_npcs() -> Path:
+    """server/npcs/ (ignorada pelo git), ou outra pasta definida em PASTA_NPCS."""
+    return Path(os.environ.get("PASTA_NPCS", Path(__file__).parent / "npcs"))
+
+
 def carregar_npc(npc_id: str) -> FichaNPC | None:
     if not ID_VALIDO.match(npc_id):
         return None
-    arquivo = PASTA_NPCS / f"{npc_id}.json"
+    arquivo = pasta_npcs() / f"{npc_id}.json"
     if not arquivo.exists():
         return None
     return FichaNPC.model_validate(json.loads(arquivo.read_text(encoding="utf-8")))

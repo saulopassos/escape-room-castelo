@@ -135,7 +135,8 @@ tempo aparece no placar.
 1. Criar a branch `<tema>/sala1` (ex.: `quimica/sala1`).
 2. Copiar `rooms/_modelo/` para `rooms/<tema>/sala1/` e trocar cenário, textos e configuração
    das peças pelo roteiro aprovado.
-3. Configurar o NPC no servidor: `server/npcs/<tema>_sala1.json` (a partir da ficha).
+3. Criar o NPC `<tema>_sala1.json` a partir da ficha e enviá-lo ao **repositório privado de
+   NPCs** (nunca ao repositório público). Ver "Entrega dos NPCs" em `server/README.md`.
 4. **Testar sozinho com 2 janelas** do Godot (*Debug → Customize Run Instances → 2*).
 5. Abrir o **Pull Request** com o checklist do template preenchido.
 6. **Revisão cruzada:** outro autor joga a sala com um colega **sem saber a resposta**.

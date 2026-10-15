@@ -40,7 +40,8 @@ docs/     planejamento, padrões e fichas
 ## Fluxo de trabalho
 
 1. Crie uma branch: `git switch -c <tema>/<assunto>` (ex.: `quimica/sala1`).
-2. Trabalhe **só na sua pasta** (`game/rooms/<tema>/` e `server/npcs/<tema>_*.json`).
+2. Trabalhe **só na sua pasta** (`game/rooms/<tema>/`). O JSON do NPC **não** vai para este
+   repositório (ele é público): veja "Entrega dos NPCs" em [server/README.md](server/README.md).
 3. `git add`, `git commit -m "..."`, `git push -u origin <branch>`.
 4. Abra um Pull Request no GitHub e preencha o checklist.
 5. Um gerente revisa e faz o merge. Features e etapas são aprovadas pelo professor em demo.

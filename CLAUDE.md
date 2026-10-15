@@ -8,9 +8,8 @@ Projeto escolar: escape room 3D cooperativo em **Godot 4 (GDScript)** com servid
 
 - **Autores** (5 alunos): cada um é dono de um tema e só altera:
   - `game/rooms/<seu-tema>/`
-  - `server/npcs/<seu-tema>_*.json`
-- **Gerentes** (2 alunos): donos de `game/core/`, `game/assets/shared/`, `server/` (exceto
-  `npcs/`) e `docs/`.
+  - o JSON do próprio NPC (`<seu-tema>_sala<n>.json`), que fica **fora** deste repositório
+- **Gerentes** (2 alunos): donos de `game/core/`, `game/assets/shared/`, `server/` e `docs/`.
 - Pergunte ao usuário qual é o papel e o tema dele se não estiver claro.
 
 ## Regras obrigatórias
@@ -23,7 +22,9 @@ Projeto escolar: escape room 3D cooperativo em **Godot 4 (GDScript)** com servid
 3. **Todo enigma é cooperativo** e precisa funcionar com exatamente 2 jogadores
    (ver "Regra da cooperação" em `docs/03_PADROES.md`).
 4. **Nunca** coloque chave de API, senha ou o `codigo` dos NPCs dentro de `game/`.
-   O código do NPC vive só em `server/npcs/*.json`.
+   **Este repositório é público.** Nunca crie nem commite arquivos em `server/npcs/` (o git ignora
+   essa pasta): os NPCs reais ficam no repositório privado de NPCs. O modelo fictício é
+   `server/npcs_exemplo/informatica_sala1.json`.
 5. Siga a escala (1 unidade = 1 metro) e os nomes do padrão (`QUIM_S1_COFRE` etc.).
 6. GDScript com tipos estáticos (`var x: int = 0`, `func f(a: String) -> void`) e comentários
    em português.

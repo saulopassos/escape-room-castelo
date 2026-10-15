@@ -13,6 +13,11 @@ __pycache__/
 server/.env
 server/*.db
 
+# NPCs reais (códigos e respostas): nunca no repositório público.
+# O modelo fictício fica em server/npcs_exemplo/.
+server/npcs/*
+!server/npcs/README.md
+
 # Sistema
 .DS_Store
 Thumbs.db

@@ -1,8 +1,9 @@
 # Ficha do NPC com IA (autor + professor da área)
 
 > O NPC guarda um código e só o libera quando a equipe **prova conhecimento**. A IA avalia com a
-> rubrica abaixo. Depois de aprovada, esta ficha vira o arquivo `server/npcs/<tema>_sala<n>.json`
-> (modelo: `server/npcs/quimica_sala1.json`).
+> rubrica abaixo. Depois de aprovada, esta ficha vira o arquivo `<tema>_sala<n>.json`
+> (modelo fictício: `server/npcs_exemplo/informatica_sala1.json`), entregue pelo
+> **repositório privado de NPCs**, nunca pelo repositório público.
 
 **ID:** `<tema>_sala<n>` → ______________ **Autor:** ______________
 

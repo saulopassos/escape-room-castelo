@@ -1,0 +1,29 @@
+{
+  "id": "informatica_sala1",
+  "tema": "informatica",
+  "nome": "Robô Zé",
+  "persona": "robô porteiro de demonstração, simpático e um pouco teimoso",
+  "abertura": "Bip! Sou só um robô de EXEMPLO. Para passar, me expliquem: o que é um algoritmo?",
+  "desafio": "Explicar o que é um algoritmo e dar um exemplo do dia a dia.",
+  "rubrica": [
+    "Diz que um algoritmo é uma sequência de passos (instruções) para resolver um problema ou realizar uma tarefa.",
+    "Dá pelo menos um exemplo do dia a dia (receita, rota, instruções de montagem etc.)."
+  ],
+  "nao_aceitar": [
+    "Dizer apenas que algoritmo é 'um programa' ou 'código', sem falar em passos.",
+    "Exemplo sem relação com uma sequência de passos."
+  ],
+  "codigo": "0000",
+  "max_mensagens": 15,
+  "quiz": {
+    "pergunta": "O que é um algoritmo?",
+    "alternativas": [
+      "Uma peça de hardware do computador",
+      "Uma sequência de passos para resolver um problema",
+      "Um tipo de vírus",
+      "Uma linguagem de programação"
+    ],
+    "correta": 1
+  },
+  "_observacao": "EXEMPLO FICTÍCIO e público. Não use este desafio nem este código no jogo real. Os NPCs reais ficam em server/npcs/, que o git ignora."
+}

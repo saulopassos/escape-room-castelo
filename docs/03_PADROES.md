@@ -26,7 +26,8 @@ game/
       tema.tres         ← (futuro) metadados do tema: nome, cor, ordem das salas
   assets/shared/        ← modelos e sons comuns a todos (paredes, portas, fontes)
 server/                 ← placar + proxy da IA (Python)
-  npcs/<tema>_<sala>.json
+  npcs_exemplo/          ← NPC fictício (público)
+  npcs/                  ← NPCs reais: IGNORADA pelo git (repo é público)
 ```
 
 ## Nomes
